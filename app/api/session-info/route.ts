@@ -10,6 +10,7 @@ export function GET(request: NextRequest) {
             return NextResponse.json(err, { status: 500 });
         }
         return NextResponse.json({
+            status: "OK",
             sessionHandle: session?.getHandle(),
             accessTokenPayload: session?.getAccessTokenPayload(),
         });
