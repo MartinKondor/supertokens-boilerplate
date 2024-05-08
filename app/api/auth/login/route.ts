@@ -10,6 +10,32 @@ type LoginRequestType = {
     tenantId: string | undefined | null;
 };
 
+/**
+ * @swagger
+ * /api/auth/login:
+ *   post:
+ *     description: Logs in a user and returns session information
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 example: "martin.kondor+Tests@peakfs.io"
+ *               password:
+ *                 type: string
+ *                 example: "Aasd1234"
+ *               tenantId:
+ *                 type: string
+ *                 nullable: true
+ *                 example: "public"
+ *     responses:
+ *       200:
+ *         description: Session information retrieved successfully
+ */
 export async function POST(req: NextRequest) {
     try {
         
@@ -26,7 +52,7 @@ export async function POST(req: NextRequest) {
         }
 
         const result = await EmailPassword.signIn(tenantId, email, password);
-        return NextResponse.json({ ...result });
+        return NextResponse.json({ ...result, status: 200 });
     } catch (error: Error) {
         return NextResponse.json({ error: error.message });
     }

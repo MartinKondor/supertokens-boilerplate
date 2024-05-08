@@ -9,6 +9,7 @@
         "lint": "next lint"
     },
     "dependencies": {
+        "@stoplight/elements": "^8.1.2",
         "next": "latest",
         "next-swagger-doc": "^0.4.0",
         "react": "^18",
