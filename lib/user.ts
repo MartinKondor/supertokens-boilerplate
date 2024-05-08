@@ -1,10 +1,11 @@
-import { supertokens } from 'supertokens-node';
+import supertokens from 'supertokens-node';
 
 // Function to get a user by email
 export async function getUserByEmail(email: string) {
     try {
-        const user = await supertokens.getUserByEmail(email);
-        return user;
+        const tenantId: string = "public";
+        const userInfo = await supertokens.listUsersByAccountInfo(tenantId, { email });
+        return userInfo["0"];
     } catch (error) {
         // Handle error
         console.error('Error getting user by email:', error);
@@ -15,7 +16,7 @@ export async function getUserByEmail(email: string) {
 // Function to get a user by id
 export async function getUserById(id: string) {
     try {
-        const user = await supertokens.getUserById(id);
+        const user = await supertokens.getUser(id);
         return user;
     } catch (error) {
         // Handle error

@@ -1,6 +1,6 @@
 import { ensureSuperTokensInit } from "@/app/config/backend";
 import { NextResponse, NextRequest } from "next/server";
-import supertokens from "supertokens-node";
+import { getUserById } from "@/lib/user";
 
 ensureSuperTokensInit();
 
@@ -25,18 +25,17 @@ export async function GET(
     req: NextRequest,
     { params }: { params: { userId: string } }
 ) {
-    const tenantId: string = "public";
-    const searchObj = { id: params.userId };
-    const userInfo = await supertokens.listUsersByAccountInfo(tenantId, searchObj);
-    if (!userInfo || userInfo.length === 0) {
+    try {
+        const user = await getUserById(params.userId);
+        return NextResponse.json({
+            ...user,
+            status: 200
+        });
+    }
+    catch (error: Error) {
         return NextResponse.json({
             status: 204,
             message: `User with ${params.userId} doesn't exist`
         });
     }
-    const user = userInfo["0"];
-    return NextResponse.json({
-        ...user,
-        status: 200
-    });
 }
