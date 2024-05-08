@@ -17,16 +17,22 @@ This project is a boilerplate for implementing a local SuperTokens API with Mana
     - `message` (string): A message indicating the result of the login process.
     - `accessToken` (string): An access token for the authenticated user.
 
-### TODO: `/api/session-info`
+### `/api/session-info`
 
 - Method: GET
 - Description: Return the access token if available.
-TODO
+- Response:
+    - `status` (string): The status of the request.
+    - `sessionHandle` (string): ...
+    - `accessTokenPayload` (string): ...
 
-### TODO: `/api/user/[email]`
+### `/api/user/[email]`
 
 - Method: GET
 - Description: Find and return the user with the provided email.
+- Response:
+    - `status` (string): The status of the request.
+    - A Supertokens User object.
 
 ### TODO: `/api/auth/verify`
 
