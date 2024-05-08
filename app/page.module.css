@@ -158,6 +158,11 @@
     margin-bottom: 22px;
 }
 
+.linksContainerLinkCust {
+    margin: 20px 0 20px 0;
+}
+
+.linksContainerLinkCust,
 .linksContainerLink {
     display: flex;
     align-items: center;
@@ -167,6 +172,7 @@
     color: #000000;
 }
 
+.linksContainerLinkCust:last-child,
 .linksContainerLink:last-child {
     margin-right: 0;
 }
@@ -193,6 +199,7 @@
         row-gap: 34px;
     }
 
+    .linksContainerLinkCust,
     .linksContainerLink {
         margin-inline-end: 0;
     }

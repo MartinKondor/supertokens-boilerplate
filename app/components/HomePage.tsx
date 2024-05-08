@@ -1,16 +1,31 @@
 import { cookies, headers } from "next/headers";
 import { TryRefreshComponent } from "./tryRefreshClientComponent";
 import styles from "../page.module.css";
+import { SignOutIcon } from "../../assets/images";
+import { SignOutLink } from "./SignOutLink";
 import { redirect } from "next/navigation";
+import Link from "next/link";
 import Image from "next/image";
-import { CelebrateIcon, SeparatorLine } from "../../assets/images";
-import { CallAPIButton } from "./callApiButton";
-import { LinksComponent } from "./linksComponent";
 import { SessionAuthForNextJS } from "./sessionAuthForNextJS";
 import { getSSRSession } from "supertokens-node/nextjs";
 import { SessionContainer } from "supertokens-node/recipe/session";
-import { ensureSuperTokensInit } from "../config/backend";
+import { ensureSuperTokensInit } from "@/app/config/backend";
+import { config } from '@fortawesome/fontawesome-svg-core'
+import '@fortawesome/fontawesome-svg-core/styles.css'
+import {
+    IconLookup,
+    IconDefinition,
+    findIconDefinition
+} from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+    faUser,
+    faBookOpen,
+    faFile,
+    faSignOut
+} from '@fortawesome/free-solid-svg-icons';
 
+config.autoAddCss = false;
 ensureSuperTokensInit();
 
 async function getSSRSessionHelper(): Promise<{
@@ -56,23 +71,30 @@ export async function HomePage() {
         }
     }
 
+    const currentUserId = session.getUserId();
+    const links = [
+        {link: `/user/${currentUserId}`, name: "My Profile", icon: faUser},
+        {link: "/api-doc", name: "API Docs", icon: faBookOpen},
+        {link: "/session-info", name: "Session Info", icon: faFile},
+        {link: "/api/auth/sign-out", name: "Sign Out", icon: faSignOut},
+    ];
+
     return (
         <SessionAuthForNextJS>
             <div className={styles.homeContainer}>
-                <div className={styles.mainContainer}>
-                    <div className={`${styles.topBand} ${styles.successTitle} ${styles.bold500}`}>
-                        <Image src={CelebrateIcon} alt="Login successful" className={styles.successIcon} /> Login
-                        successful
-                    </div>
-                    <div className={styles.innerContent}>
-                        <div>Your userID is:</div>
-                        <div className={`${styles.truncate} ${styles.userId}`}>{session.getUserId()}</div>
-                        <CallAPIButton />
-                    </div>
+                <div>
+                    {links.map(link =>
+                        link.name !== "Sign Out" ?
+                        <Link href={link.link} className={styles.linksContainerLinkCust} key={link.name}>
+                            <FontAwesomeIcon icon={link.icon} />
+                            <div style={{marginLeft: 5}} role={"button"}>{link.name}</div>
+                        </Link>
+                        :
+                        <SignOutLink name={link.name} link={link.link} icon={SignOutIcon} key={link.name} />
+                    )}
                 </div>
-                <LinksComponent />
-                <Image className={styles.separatorLine} src={SeparatorLine} alt="separator" />
-            </div>
+            </div>  
         </SessionAuthForNextJS>
     );
+
 }

@@ -9,6 +9,8 @@
         "lint": "next lint"
     },
     "dependencies": {
+        "@fortawesome/fontawesome-svg-core": "^6.5.2",
+        "@fortawesome/free-solid-svg-icons": "^6.5.2",
         "@stoplight/elements": "^8.1.2",
         "next": "latest",
         "next-logger": "^4.0.0",
