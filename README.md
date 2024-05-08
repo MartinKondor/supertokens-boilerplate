@@ -17,7 +17,18 @@ This project is a boilerplate for implementing a local SuperTokens API with Mana
     - `message` (string): A message indicating the result of the login process.
     - `accessToken` (string): An access token for the authenticated user.
 
-### `/api/auth/verify`
+### TODO: `/api/session-info`
+
+- Method: GET
+- Description: Return the access token if available.
+TODO
+
+### TODO: `/api/user/[email]`
+
+- Method: GET
+- Description: Find and return the user with the provided email.
+
+### TODO: `/api/auth/verify`
 
 - Method: POST
 - Description: Verifies a user's phone number using Twilio.
@@ -35,6 +46,7 @@ To get started with this project, follow these steps:
 1. Clone the repository: `git clone https://github.com/MartinKondor/supertokens-boilerplate.git`
 2. Install the dependencies: `npm install`
 3. Configure the environment variables in a `.env.local` file:
+     - `NODE_ENV`: `development` or `production`.
      - `SUPERTOKENS_URL`: Your SuperTokens connection URI.
      - `SUPERTOKENS_API_KEY`: Your SuperTokens API key.
      - `TWILIO_SID`: Your Twilio account SID.
