@@ -6,32 +6,32 @@ ensureSuperTokensInit();
 
 /**
  * @swagger
- * /api/user/<email>:
+ * /api/user/by-id/{userId}:
  *   get:
- *     description: Returns the user with the specified email
+ *     description: Returns the user with the specified userId
  *     parameters:
  *       - in: path
- *         name: email
+ *         name: userId
  *         required: true
  *         schema:
  *           type: string
- *           example: martin.kondor+Tests@peakfs.io
- *         description: The email of the user
+ *           example: bef2f9ae-3a86-432f-9dc9-c409ab3d2e66
+ *         description: The id of the user
  *     responses:
  *       200:
  *         description: User returned successfully
  */
 export async function GET(
     req: NextRequest,
-    { params }: { params: { email: string } }
+    { params }: { params: { userId: string } }
 ) {
     const tenantId: string = "public";
-    const searchObj = { email: params.email };
+    const searchObj = { id: params.userId };
     const userInfo = await supertokens.listUsersByAccountInfo(tenantId, searchObj);
     if (!userInfo || userInfo.length === 0) {
         return NextResponse.json({
             status: 204,
-            message: "User with 'email' doesn't exist"
+            message: `User with ${params.userId} doesn't exist`
         });
     }
     const user = userInfo["0"];

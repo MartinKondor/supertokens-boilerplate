@@ -7,6 +7,8 @@ import { ensureSuperTokensInit } from "./app/config/backend";
 ensureSuperTokensInit();
 
 export async function middleware(request: NextRequest & { session?: SessionContainer }) {
+    
+    
     if (process.env.NODE_ENV.toLowerCase().startsWith("dev")) {
         return NextResponse.next();
     }
