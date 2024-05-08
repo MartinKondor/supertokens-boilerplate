@@ -4,6 +4,10 @@ import { getUserByEmail } from "@/lib/user";
 
 ensureSuperTokensInit();
 
+type GETRequestType = {
+    params: { email: string }
+};
+
 /**
  * @swagger
  * /api/user/by-email/{email}:
@@ -23,10 +27,11 @@ ensureSuperTokensInit();
  */
 export async function GET(
     req: NextRequest,
-    { params }: { params: { email: string } }
+    { params }: GETRequestType
 ) {
     try {
         const user = await getUserByEmail(params.email);
+        if (!user) throw Error();
         return NextResponse.json({
             ...user,
             status: 200
@@ -35,7 +40,7 @@ export async function GET(
     catch (error: Error) {
         return NextResponse.json({
             status: 204,
-            message: `User with ${params.email} doesn't exist`
+            message: `User with email: '${params.email}' doesn't exist`
         });
     }
 }

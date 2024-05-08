@@ -11,20 +11,3 @@ export default async function ApiDocsPage() {
     </div>
   )
 }
-
-/*
-import { getApiDocs } from '@/lib/swagger';
-
-const ApiDocsPage: React.FC = () => {
-    const apiDocs = getApiDocs();
-
-    return (
-        <div>
-            <h1>API Documentation</h1>
-            <pre>{JSON.stringify(apiDocs, null, 2)}</pre>
-        </div>
-    );
-};
-
-export default ApiDocsPage;
-*/

@@ -4,6 +4,10 @@ import { getUserById } from "@/lib/user";
 
 ensureSuperTokensInit();
 
+type GETRequestType = {
+    params: { userId: string }
+};
+
 /**
  * @swagger
  * /api/user/by-id/{userId}:
@@ -23,10 +27,11 @@ ensureSuperTokensInit();
  */
 export async function GET(
     req: NextRequest,
-    { params }: { params: { userId: string } }
+    { params }: GETRequestType
 ) {
     try {
         const user = await getUserById(params.userId);
+        if (!user) throw Error();
         return NextResponse.json({
             ...user,
             status: 200
@@ -35,7 +40,7 @@ export async function GET(
     catch (error: Error) {
         return NextResponse.json({
             status: 204,
-            message: `User with ${params.userId} doesn't exist`
+            message: `User with id: '${params.userId}' doesn't exist`
         });
     }
 }

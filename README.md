@@ -2,6 +2,12 @@
 
 This project is a boilerplate for implementing a local SuperTokens API with Managed SuperTokens database and Twilio for user verification.
 
+## Features
+
+* Using SuperTokens for authentication
+* Using Twilio for phone number verification with SMS
+* Swagger at `http://localhost:3000/api-doc`
+
 ## Getting Started
 
 To get started with this project, follow these steps:
