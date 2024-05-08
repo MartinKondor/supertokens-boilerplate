@@ -1,21 +1,22 @@
 import { ensureSuperTokensInit } from "@/app/config/backend";
 import { NextResponse, NextRequest } from "next/server";
-import { getUserByEmail } from "supertokens-node/recipe/emailpassword";
+import supertokens from "supertokens-node";
+
+ensureSuperTokensInit();
 
 export async function GET(
-    request: NextRequest,
+    req: NextRequest,
     { params }: { params: { email: string } }
 ) {
-    ensureSuperTokensInit();
-    console.log(params.email);
-
-    const user = await getUserByEmail(params.email);
-    if (!user) {
+    const tenantId: string = "public";
+    const searchObj = { email: params.email };
+    const userInfo = await supertokens.listUsersByAccountInfo(tenantId, searchObj);
+    if (!userInfo || userInfo.length === 0) {
         return NextResponse.json({ message: "User with 'email' doesn't exist" });
     }
-
-    const res = NextResponse.json({
-        message: params.email
+    const user = userInfo["0"];
+    return NextResponse.json({
+        status: "OK",
+        ...user
     });
-    return res;
 }
