@@ -34,7 +34,7 @@ export function HomePageClient({ currentUserId }: PropsType) {
 
     if (process.env.NODE_ENV === "development") {
         links.push({link: "/verify-email", name: "Verify Email", icon: faEnvelope});
-        links.push({link: "/api/auth/verify-phone", name: "Verify Phone", icon: faPhone});
+        links.push({link: "/verify-phone", name: "Verify Phone", icon: faPhone});
     }
 
     return (

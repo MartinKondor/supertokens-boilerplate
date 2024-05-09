@@ -43,16 +43,16 @@ const Button = styled.button`
     }
 `;
 
-export default function VerifyEmail() {
+export default function VerifyPhone() {
     return (
         <Container>
-            <Header title="Verify Email" />
-            <Form action="/api/auth/verify-email" method="POST">
+            <Header title="Verify Phone" />
+            <Form action="/api/auth/verify-phone" method="POST">
                 <Label>
-                    Email:
-                    <input type="email" name="email" />
+                    Phone Number:
+                    <input type="phone" name="phone" />
                 </Label>
-                <Button type="submit">Send Email</Button>
+                <Button type="submit">Send SMS</Button>
             </Form>
         </Container>
     );
