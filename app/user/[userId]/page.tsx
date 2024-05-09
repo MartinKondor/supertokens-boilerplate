@@ -1,10 +1,8 @@
 "use client";
-
-import { useEffect, useState } from "react";
-
+import Header from "@/app/components/Header";
 
 export default function UserView() {
     return (<div>
-        <p>UserView</p>
+        <Header title="User View" />
     </div>);
 }

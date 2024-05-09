@@ -1,10 +1,8 @@
 "use client";
-
-import { useEffect, useState } from "react";
-
+import Header from "@/app/components/Header";
 
 export default function SessionInfoView() {
     return (<div>
-        <p>SessionInfoView</p>
+        <Header title="Session Info" />
     </div>);
 }

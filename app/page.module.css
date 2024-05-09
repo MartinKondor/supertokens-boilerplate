@@ -163,14 +163,15 @@
     font-weight: 400;
     margin-left: 5px;
     color: black;
-    transition: all 0.3s;
+    transition: all 0.25s;
 }
 
 .linkName:active,
 .linkName:hover {
-    margin-left: 12px;
+    font-size: 17px;
+    margin-left: 10px;
     font-weight: 800;
-    color: rgb(120, 120, 120);
+    color: rgb(100, 100, 120);
 }
 
 .linksContainerLink {

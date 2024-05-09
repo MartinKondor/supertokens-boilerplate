@@ -7,14 +7,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from "react";
 import {
     faUser, faBookOpen, faFile,
-    faSignOut, faEnvelope, faPhone
+    faSignOut, faEnvelope, faPhone, faHome
 } from '@fortawesome/free-solid-svg-icons';
 
 import styles from "../page.module.css";
 import { SignOutIcon } from "../../assets/images";
 import { SignOutLink } from "./SignOutLink";
 import { LoadingSpinner } from "./LoadingSpinner";
-
+import Header from "./Header";
 
 config.autoAddCss = false;
 ensureSuperTokensInit();
@@ -33,15 +33,13 @@ export function HomePageClient({ currentUserId }: PropsType) {
     ];
 
     if (process.env.NODE_ENV === "development") {
-        links.push({link: "/api/auth/verify-email", name: "Verify Email", icon: faEnvelope});
+        links.push({link: "/verify-email", name: "Verify Email", icon: faEnvelope});
         links.push({link: "/api/auth/verify-phone", name: "Verify Phone", icon: faPhone});
     }
 
     return (
         <div>
-            <div>
-                <h1>Home Page</h1>  
-            </div>
+            <Header title="Home Page" />
             {isLoading ? <LoadingSpinner /> : (
                 <div>
                     {links.map(link =>
