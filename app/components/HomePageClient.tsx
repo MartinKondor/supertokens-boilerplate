@@ -1,7 +1,4 @@
 "use client";
-import styles from "../page.module.css";
-import { SignOutIcon } from "../../assets/images";
-import { SignOutLink } from "./SignOutLink";
 import Link from "next/link";
 import { ensureSuperTokensInit } from "@/app/config/backend";
 import { config } from '@fortawesome/fontawesome-svg-core'
@@ -10,8 +7,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from "react";
 import {
     faUser, faBookOpen, faFile,
-    faSignOut, faEnvelope, faPhone, faSpinner
+    faSignOut, faEnvelope, faPhone
 } from '@fortawesome/free-solid-svg-icons';
+
+import styles from "../page.module.css";
+import { SignOutIcon } from "../../assets/images";
+import { SignOutLink } from "./SignOutLink";
+import { LoadingSpinner } from "./LoadingSpinner";
+
 
 config.autoAddCss = false;
 ensureSuperTokensInit();
@@ -39,9 +42,7 @@ export function HomePageClient({ currentUserId }: PropsType) {
             <div>
                 <h1>Home Page</h1>  
             </div>
-            {isLoading ? (
-                <FontAwesomeIcon icon={faSpinner} spin />
-            ) : (
+            {isLoading ? <LoadingSpinner /> : (
                 <div>
                     {links.map(link =>
                         link.name !== "Sign Out" ?
@@ -50,7 +51,7 @@ export function HomePageClient({ currentUserId }: PropsType) {
                             <div className={styles.linkName} role={"button"}>{link.name}</div>
                         </Link>
                         :
-                        <SignOutLink name={link.name} link={link.link} icon={SignOutIcon} key={link.name} />
+                        <SignOutLink name={link.name} link={link.link} icon={SignOutIcon} key={link.name} onClick={() => setIsLoading(true)} />
                     )}
                 </div>  
             )}
