@@ -8,7 +8,7 @@ This project is a template for implementing a local SuperTokens API with Managed
 * Swagger at `http://localhost:3000/api-doc` with OpenAPI 3.0
 * Using [FontAwesome](https://fontawesome.com/) for icons
 * Using [Resend](https://resend.com/) for email address verification
-* TODO: Using [Twilio](https://www.twilio.com/en-us) for phone number verification with SMS
+* Using [Twilio](https://www.twilio.com/en-us) for phone number verification with SMS
 * TODO: Using a [Postgres](https://www.postgresql.org) database with [Docker](https://www.docker.com/)
 
 ## Getting Started
