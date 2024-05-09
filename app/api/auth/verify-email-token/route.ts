@@ -37,6 +37,7 @@ export async function POST(request: POSTRequestType) {
 
         // Get the token from the database and verify
         // TODO: Database connection
+        // TODO: On correct token, redirect to the home page
 
         return NextResponse.json({
             status: 200,

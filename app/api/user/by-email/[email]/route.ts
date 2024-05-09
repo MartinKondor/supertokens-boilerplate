@@ -1,6 +1,7 @@
 import { ensureSuperTokensInit } from "@/app/config/backend";
 import { NextResponse, NextRequest } from "next/server";
 import { getUserByEmail } from "@/lib/user";
+import log from "@/lib/logger";
 
 ensureSuperTokensInit();
 
@@ -29,6 +30,7 @@ export async function GET(
     req: NextRequest,
     { params }: GETRequestType
 ) {
+    log(req, "User by email");
     try {
         const user = await getUserByEmail(params.email);
         if (!user) throw Error();

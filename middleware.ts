@@ -3,14 +3,12 @@ import type { NextRequest } from "next/server";
 import { SessionContainer } from "supertokens-node/recipe/session";
 import { withSession } from "supertokens-node/nextjs";
 import { ensureSuperTokensInit } from "./app/config/backend";
-import chalk from "chalk";
 
 ensureSuperTokensInit();
 type RequestType = NextRequest & { session?: SessionContainer };
 
 export async function middleware(request: RequestType) {
     if (process.env.NODE_ENV.toLowerCase().startsWith("dev")) {
-        // console.log(chalk.cyanBright(`[${new Date().toISOString()}] ${request.method} ${request.nextUrl.pathname}`));
         return NextResponse.next();
     }
     else {

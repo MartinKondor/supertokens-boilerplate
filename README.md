@@ -2,12 +2,14 @@
 
 This project is a boilerplate for implementing a local SuperTokens API with Managed SuperTokens database and Twilio for user verification.
 
-## Features
+## Used Tools
 
-* Using SuperTokens for authentication
-* Swagger at `http://localhost:3000/api-doc`
-* Using Fontawesome for icons
-* TODO: Using Twilio for phone number verification with SMS
+* Using [SuperTokens](https://supertokens.com/) for authentication
+* Swagger at `http://localhost:3000/api-doc` with OpenAPI 3.0
+* Using [FontAwesome](https://fontawesome.com/) for icons
+* TODO: Using [Resend](https://resend.com/) for email address verification
+* TODO: Using [Twilio](https://www.twilio.com/en-us) for phone number verification with SMS
+* TODO: Using a [Postgres](https://www.postgresql.org) database with [Docker](https://www.docker.com/)
 
 ## Getting Started
 

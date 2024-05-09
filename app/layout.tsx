@@ -6,8 +6,8 @@ import { SuperTokensProvider } from "./components/supertokensProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-    title: "SuperTokens 💫",
-    description: "SuperTokens demo app",
+    title: "💫 SuperTokens Template",
+    description: "SuperTokens Template App",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
