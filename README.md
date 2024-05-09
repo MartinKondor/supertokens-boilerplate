@@ -1,6 +1,6 @@
 # SuperTokens-Template
 
-This project is a boilerplate for implementing a local SuperTokens API with Managed SuperTokens database and Twilio for user verification.
+This project is a template for implementing a local SuperTokens API with Managed SuperTokens database and Twilio for user verification.
 
 ## Used Tools
 
@@ -15,14 +15,9 @@ This project is a boilerplate for implementing a local SuperTokens API with Mana
 
 To get started with this project, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/MartinKondor/supertokens-boilerplate.git`
+1. Clone the repository: `git clone https://github.com/MartinKondor/supertokens-template.git`
 2. Install the dependencies: `npm install`
-3. Configure the environment variables in a `.env.local` file:
-     - `NODE_ENV`: `development` or `production`.
-     - `SUPERTOKENS_URL`: Your SuperTokens connection URI.
-     - `SUPERTOKENS_API_KEY`: Your SuperTokens API key.
-     - `TWILIO_SID`: Your Twilio account SID.
-     - `TWILIO_TOKEN`: Your Twilio auth token.
+3. Configure the environment variables in a `.env.local` file, see [.env.local.example](.env.local.example)
 4. Start the server: `npm run dev`
 5. Open `http://localhost:3000/auth` or `http://localhost:3000/api-doc` for Swagger UI.
 
