@@ -22,7 +22,7 @@ export const SignOutLink = (props: { name: string; link: string; icon: string })
             onClick={signOut}
         >
             <Image className={styles.linkIcon} src={props.icon} alt={props.name} />
-            <div role={"button"}>{props.name}</div>
+            <div className={styles.linkName} role={"button"}>{props.name}</div>
         </div>
     );
 };

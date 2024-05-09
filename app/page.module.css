@@ -158,11 +158,18 @@
     margin-bottom: 22px;
 }
 
-.linksContainerLinkCust {
-    margin: 20px 0 20px 0;
+.linkName {
+    font-size: 16px;
+    font-weight: 500;
+    margin-left: 5px;
+    transition: all 0.3s;
 }
 
-.linksContainerLinkCust,
+.linkName:active,
+.linkName:hover {
+    font-weight: 800;
+}
+
 .linksContainerLink {
     display: flex;
     align-items: center;
@@ -170,11 +177,7 @@
     cursor: pointer;
     text-decoration: none;
     color: #000000;
-}
-
-.linksContainerLinkCust:last-child,
-.linksContainerLink:last-child {
-    margin-right: 0;
+    margin: 30px;
 }
 
 .truncate {

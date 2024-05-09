@@ -5,8 +5,9 @@ This project is a boilerplate for implementing a local SuperTokens API with Mana
 ## Features
 
 * Using SuperTokens for authentication
-* Using Twilio for phone number verification with SMS
 * Swagger at `http://localhost:3000/api-doc`
+* Using Fontawesome for icons
+* TODO: Using Twilio for phone number verification with SMS
 
 ## Getting Started
 

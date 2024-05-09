@@ -1,29 +1,13 @@
 import { cookies, headers } from "next/headers";
 import { TryRefreshComponent } from "./tryRefreshClientComponent";
-import styles from "../page.module.css";
-import { SignOutIcon } from "../../assets/images";
-import { SignOutLink } from "./SignOutLink";
 import { redirect } from "next/navigation";
-import Link from "next/link";
-import Image from "next/image";
 import { SessionAuthForNextJS } from "./sessionAuthForNextJS";
 import { getSSRSession } from "supertokens-node/nextjs";
 import { SessionContainer } from "supertokens-node/recipe/session";
 import { ensureSuperTokensInit } from "@/app/config/backend";
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
-import {
-    IconLookup,
-    IconDefinition,
-    findIconDefinition
-} from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faUser,
-    faBookOpen,
-    faFile,
-    faSignOut
-} from '@fortawesome/free-solid-svg-icons';
+import { HomePageClient } from "./HomePageClient";
 
 config.autoAddCss = false;
 ensureSuperTokensInit();
@@ -71,29 +55,9 @@ export async function HomePage() {
         }
     }
 
-    const currentUserId = session.getUserId();
-    const links = [
-        {link: `/user/${currentUserId}`, name: "My Profile", icon: faUser},
-        {link: "/api-doc", name: "API Docs", icon: faBookOpen},
-        {link: "/session-info", name: "Session Info", icon: faFile},
-        {link: "/api/auth/sign-out", name: "Sign Out", icon: faSignOut},
-    ];
-
     return (
         <SessionAuthForNextJS>
-            <div className={styles.homeContainer}>
-                <div>
-                    {links.map(link =>
-                        link.name !== "Sign Out" ?
-                        <Link href={link.link} className={styles.linksContainerLinkCust} key={link.name}>
-                            <FontAwesomeIcon icon={link.icon} />
-                            <div style={{marginLeft: 5}} role={"button"}>{link.name}</div>
-                        </Link>
-                        :
-                        <SignOutLink name={link.name} link={link.link} icon={SignOutIcon} key={link.name} />
-                    )}
-                </div>
-            </div>  
+            <HomePageClient currentUserId={session.getUserId()} />
         </SessionAuthForNextJS>
     );
 
