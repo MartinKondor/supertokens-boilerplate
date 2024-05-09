@@ -24,7 +24,8 @@
         "supertokens-auth-react": "latest",
         "supertokens-node": "latest",
         "supertokens-web-js": "^0.10.1",
-        "swagger-ui-react": "^5.17.6"
+        "swagger-ui-react": "^5.17.6",
+        "twilio": "^5.0.4"
     },
     "devDependencies": {
         "@types/cookie": "^0.5.2",
