@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 type POSTRequestType = NextRequest & {
     body: {
+        phone: string,
         token: string
     }
 };
@@ -9,23 +10,24 @@ type POSTRequestType = NextRequest & {
 /**
  * @swagger
  * /api/auth/verify-phone-token:
- *   get:
+ *   post:
  *     description: Verify the sent token
- *       - in: query
- *         name: phone
- *         required: true
- *         schema:
- *           type: string
- *       - in: query
- *         name: token
- *         required: true
- *         schema:
- *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               phone:
+ *                 type: string
+ *               token:
+ *                 type: string
  *     responses:
  *       200:
  *         description: Token verified successfully
  */
-export async function GET(request: POSTRequestType) {
+export async function POST(request: POSTRequestType) {
     try {
         
         // Read the body
