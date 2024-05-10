@@ -3,6 +3,7 @@
 !.env.example
 tmp.sh
 TODO
+data/
 
 # dependencies
 /node_modules
