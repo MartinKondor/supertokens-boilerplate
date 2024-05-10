@@ -1,12 +1,16 @@
 version: '3.8'
 services:
+  # In case the port is already in use:
+  # >>> sudo lsof -i :5432
+  # >>> sudo kill -9 <PID>
+  # >>> docker-compose up -d
   db:
     image: postgres
     restart: always
     environment:
-      POSTGRES_USER: your_username
-      POSTGRES_PASSWORD: your_password
-      POSTGRES_DB: your_database_name
+      POSTGRES_USER: postgresuser
+      POSTGRES_PASSWORD: postgrespassword
+      POSTGRES_DB: postgresdb
     volumes:
       - ./data:/var/lib/postgresql/data
     ports:

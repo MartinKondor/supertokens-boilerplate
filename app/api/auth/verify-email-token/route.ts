@@ -35,15 +35,9 @@ export async function POST(request: POSTRequestType) {
         const email = body.email;
         const token = body.token;
 
-        // Get the token from the database and verify
-        // TODO: Database connection
-        // TODO: On correct token, redirect to the home page
+        // TODO: Get & check the token from in the database
 
-        return NextResponse.json({
-            status: 200,
-            email,
-            token
-        });
+        return NextResponse.redirect("/");
 
     } catch (error: Error) {
         return NextResponse.json({ error: error.message });

@@ -45,7 +45,7 @@ export async function POST(request: POSTRequestType) {
         };
 
         // Save the token in the database
-        // TODO: Database connection
+        // TODO: Save token into the database
 
         await resend.emails.send(sendEmailInfo);
 

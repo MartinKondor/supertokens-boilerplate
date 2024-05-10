@@ -10,6 +10,7 @@ This project is a template for implementing a local SuperTokens API with Managed
 * Using [Resend](https://resend.com/) for email address verification
 * Using [Twilio](https://www.twilio.com/en-us) for phone number verification with SMS
 * TODO: Using a [Postgres](https://www.postgresql.org) database with [Docker](https://www.docker.com/)
+* TODO: Using [tRPC](https://trpc.io/) on some routes
 
 ## Getting Started
 
